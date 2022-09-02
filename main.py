@@ -22,11 +22,14 @@ def get_driver():
 def get_element(chrome_driver):
     element = chrome_driver.find_elements(by="xpath", value="/html/body/div[1]/div/h1[1]")
     print(element[0].text)
+    # get dynamic value. Wait time is required.
+    time.sleep(3)
+    dynamic_element = chrome_driver.find_elements(by="xpath", value="/html/body/div[1]/div/h1[2]")
+    print(dynamic_element[0].text)
 
 
 if __name__ == "__main__":
     driver = get_driver()
     get_element(driver)
     # Close the webpage after text parsing is done.
-    time.sleep(2)
     driver.close()
